@@ -53,7 +53,7 @@ func (m IORead) Call(c Client) (*IOReadResult, error) {
 // IOReadResult ...
 type IOReadResult struct {
 	// Base64Encoded (optional) Set if the data is base64-encoded
-	Base64Encoded bool `json:"base64Encoded,omitempty"`
+	Base64Encoded *bool `json:"base64Encoded,omitempty"`
 
 	// Data that were read.
 	Data string `json:"data"`

@@ -111,7 +111,7 @@ type LayerTreeLayer struct {
 	DrawsContent bool `json:"drawsContent"`
 
 	// Invisible (optional) Set if layer is not visible.
-	Invisible bool `json:"invisible,omitempty"`
+	Invisible *bool `json:"invisible,omitempty"`
 
 	// ScrollRects (optional) Rectangles scrolling on main thread only.
 	ScrollRects []*LayerTreeScrollRect `json:"scrollRects,omitempty"`

@@ -42,13 +42,13 @@ type TracingTraceConfig struct {
 	TraceBufferSizeInKb *float64 `json:"traceBufferSizeInKb,omitempty"`
 
 	// EnableSampling (experimental) (optional) Turns on JavaScript stack sampling.
-	EnableSampling bool `json:"enableSampling,omitempty"`
+	EnableSampling *bool `json:"enableSampling,omitempty"`
 
 	// EnableSystrace (experimental) (optional) Turns on system tracing.
-	EnableSystrace bool `json:"enableSystrace,omitempty"`
+	EnableSystrace *bool `json:"enableSystrace,omitempty"`
 
 	// EnableArgumentFilter (experimental) (optional) Turns on argument filter.
-	EnableArgumentFilter bool `json:"enableArgumentFilter,omitempty"`
+	EnableArgumentFilter *bool `json:"enableArgumentFilter,omitempty"`
 
 	// IncludedCategories (optional) Included category filters.
 	IncludedCategories []string `json:"includedCategories,omitempty"`
@@ -166,7 +166,7 @@ func (m TracingRecordClockSyncMarker) Call(c Client) error {
 // TracingRequestMemoryDump (experimental) Request a global memory dump.
 type TracingRequestMemoryDump struct {
 	// Deterministic (optional) Enables more deterministic results by forcing garbage collection
-	Deterministic bool `json:"deterministic,omitempty"`
+	Deterministic *bool `json:"deterministic,omitempty"`
 
 	// LevelOfDetail (optional) Specifies level of details in memory dump. Defaults to "detailed".
 	LevelOfDetail TracingMemoryDumpLevelOfDetail `json:"levelOfDetail,omitempty"`

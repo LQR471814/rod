@@ -531,7 +531,7 @@ type RuntimePropertyDescriptor struct {
 	Value *RuntimeRemoteObject `json:"value,omitempty"`
 
 	// Writable (optional) True if the value associated with the property may be changed (data descriptors only).
-	Writable bool `json:"writable,omitempty"`
+	Writable *bool `json:"writable,omitempty"`
 
 	// Get (optional) A function which serves as a getter for the property, or `undefined` if there is no getter
 	// (accessor descriptors only).
@@ -550,10 +550,10 @@ type RuntimePropertyDescriptor struct {
 	Enumerable bool `json:"enumerable"`
 
 	// WasThrown (optional) True if the result was thrown during the evaluation.
-	WasThrown bool `json:"wasThrown,omitempty"`
+	WasThrown *bool `json:"wasThrown,omitempty"`
 
 	// IsOwn (optional) True if the property is owned for the object.
-	IsOwn bool `json:"isOwn,omitempty"`
+	IsOwn *bool `json:"isOwn,omitempty"`
 
 	// Symbol (optional) Property symbol object, if the property is of the `symbol` type.
 	Symbol *RuntimeRemoteObject `json:"symbol,omitempty"`
@@ -717,10 +717,10 @@ type RuntimeAwaitPromise struct {
 	PromiseObjectID RuntimeRemoteObjectID `json:"promiseObjectId"`
 
 	// ReturnByValue (optional) Whether the result is expected to be a JSON object that should be sent by value.
-	ReturnByValue bool `json:"returnByValue,omitempty"`
+	ReturnByValue *bool `json:"returnByValue,omitempty"`
 
 	// GeneratePreview (optional) Whether preview should be generated for the result.
-	GeneratePreview bool `json:"generatePreview,omitempty"`
+	GeneratePreview *bool `json:"generatePreview,omitempty"`
 }
 
 // ProtoReq name.
@@ -757,21 +757,21 @@ type RuntimeCallFunctionOn struct {
 
 	// Silent (optional) In silent mode exceptions thrown during evaluation are not reported and do not pause
 	// execution. Overrides `setPauseOnException` state.
-	Silent bool `json:"silent,omitempty"`
+	Silent *bool `json:"silent,omitempty"`
 
 	// ReturnByValue (optional) Whether the result is expected to be a JSON object which should be sent by value.
 	// Can be overridden by `serializationOptions`.
-	ReturnByValue bool `json:"returnByValue,omitempty"`
+	ReturnByValue *bool `json:"returnByValue,omitempty"`
 
 	// GeneratePreview (experimental) (optional) Whether preview should be generated for the result.
-	GeneratePreview bool `json:"generatePreview,omitempty"`
+	GeneratePreview *bool `json:"generatePreview,omitempty"`
 
 	// UserGesture (optional) Whether execution should be treated as initiated by user in the UI.
-	UserGesture bool `json:"userGesture,omitempty"`
+	UserGesture *bool `json:"userGesture,omitempty"`
 
 	// AwaitPromise (optional) Whether execution should `await` for resulting value and return once awaited promise is
 	// resolved.
-	AwaitPromise bool `json:"awaitPromise,omitempty"`
+	AwaitPromise *bool `json:"awaitPromise,omitempty"`
 
 	// ExecutionContextID (optional) Specifies execution context which global object will be used to call function on. Either
 	// executionContextId or objectId should be specified.
@@ -782,7 +782,7 @@ type RuntimeCallFunctionOn struct {
 	ObjectGroup string `json:"objectGroup,omitempty"`
 
 	// ThrowOnSideEffect (experimental) (optional) Whether to throw an exception if side effect cannot be ruled out during evaluation.
-	ThrowOnSideEffect bool `json:"throwOnSideEffect,omitempty"`
+	ThrowOnSideEffect *bool `json:"throwOnSideEffect,omitempty"`
 
 	// UniqueContextID (experimental) (optional) An alternative way to specify the execution context to call function on.
 	// Compared to contextId that may be reused across processes, this is guaranteed to be
@@ -893,11 +893,11 @@ type RuntimeEvaluate struct {
 	ObjectGroup string `json:"objectGroup,omitempty"`
 
 	// IncludeCommandLineAPI (optional) Determines whether Command Line API should be available during the evaluation.
-	IncludeCommandLineAPI bool `json:"includeCommandLineAPI,omitempty"`
+	IncludeCommandLineAPI *bool `json:"includeCommandLineAPI,omitempty"`
 
 	// Silent (optional) In silent mode exceptions thrown during evaluation are not reported and do not pause
 	// execution. Overrides `setPauseOnException` state.
-	Silent bool `json:"silent,omitempty"`
+	Silent *bool `json:"silent,omitempty"`
 
 	// ContextID (optional) Specifies in which execution context to perform evaluation. If the parameter is omitted the
 	// evaluation will be performed in the context of the inspected page.
@@ -907,38 +907,38 @@ type RuntimeEvaluate struct {
 	ContextID RuntimeExecutionContextID `json:"contextId,omitempty"`
 
 	// ReturnByValue (optional) Whether the result is expected to be a JSON object that should be sent by value.
-	ReturnByValue bool `json:"returnByValue,omitempty"`
+	ReturnByValue *bool `json:"returnByValue,omitempty"`
 
 	// GeneratePreview (experimental) (optional) Whether preview should be generated for the result.
-	GeneratePreview bool `json:"generatePreview,omitempty"`
+	GeneratePreview *bool `json:"generatePreview,omitempty"`
 
 	// UserGesture (optional) Whether execution should be treated as initiated by user in the UI.
-	UserGesture bool `json:"userGesture,omitempty"`
+	UserGesture *bool `json:"userGesture,omitempty"`
 
 	// AwaitPromise (optional) Whether execution should `await` for resulting value and return once awaited promise is
 	// resolved.
-	AwaitPromise bool `json:"awaitPromise,omitempty"`
+	AwaitPromise *bool `json:"awaitPromise,omitempty"`
 
 	// ThrowOnSideEffect (experimental) (optional) Whether to throw an exception if side effect cannot be ruled out during evaluation.
 	// This implies `disableBreaks` below.
-	ThrowOnSideEffect bool `json:"throwOnSideEffect,omitempty"`
+	ThrowOnSideEffect *bool `json:"throwOnSideEffect,omitempty"`
 
 	// Timeout (experimental) (optional) Terminate execution after timing out (number of milliseconds).
 	Timeout RuntimeTimeDelta `json:"timeout,omitempty"`
 
 	// DisableBreaks (experimental) (optional) Disable breakpoints during execution.
-	DisableBreaks bool `json:"disableBreaks,omitempty"`
+	DisableBreaks *bool `json:"disableBreaks,omitempty"`
 
 	// ReplMode (experimental) (optional) Setting this flag to true enables `let` re-declaration and top-level `await`.
 	// Note that `let` variables can only be re-declared if they originate from
 	// `replMode` themselves.
-	ReplMode bool `json:"replMode,omitempty"`
+	ReplMode *bool `json:"replMode,omitempty"`
 
 	// AllowUnsafeEvalBlockedByCSP (experimental) (optional) The Content Security Policy (CSP) for the target might block 'unsafe-eval'
 	// which includes eval(), Function(), setTimeout() and setInterval()
 	// when called with non-callable arguments. This flag bypasses CSP for this
 	// evaluation and allows unsafe-eval. Defaults to true.
-	AllowUnsafeEvalBlockedByCSP bool `json:"allowUnsafeEvalBlockedByCSP,omitempty"`
+	AllowUnsafeEvalBlockedByCSP *bool `json:"allowUnsafeEvalBlockedByCSP,omitempty"`
 
 	// UniqueContextID (experimental) (optional) An alternative way to specify the execution context to evaluate in.
 	// Compared to contextId that may be reused across processes, this is guaranteed to be
@@ -1019,17 +1019,17 @@ type RuntimeGetProperties struct {
 
 	// OwnProperties (optional) If true, returns properties belonging only to the element itself, not to its prototype
 	// chain.
-	OwnProperties bool `json:"ownProperties,omitempty"`
+	OwnProperties *bool `json:"ownProperties,omitempty"`
 
 	// AccessorPropertiesOnly (experimental) (optional) If true, returns accessor properties (with getter/setter) only; internal properties are not
 	// returned either.
-	AccessorPropertiesOnly bool `json:"accessorPropertiesOnly,omitempty"`
+	AccessorPropertiesOnly *bool `json:"accessorPropertiesOnly,omitempty"`
 
 	// GeneratePreview (experimental) (optional) Whether preview should be generated for the results.
-	GeneratePreview bool `json:"generatePreview,omitempty"`
+	GeneratePreview *bool `json:"generatePreview,omitempty"`
 
 	// NonIndexedPropertiesOnly (experimental) (optional) If true, returns non-indexed properties only.
-	NonIndexedPropertiesOnly bool `json:"nonIndexedPropertiesOnly,omitempty"`
+	NonIndexedPropertiesOnly *bool `json:"nonIndexedPropertiesOnly,omitempty"`
 }
 
 // ProtoReq name.
@@ -1154,20 +1154,20 @@ type RuntimeRunScript struct {
 
 	// Silent (optional) In silent mode exceptions thrown during evaluation are not reported and do not pause
 	// execution. Overrides `setPauseOnException` state.
-	Silent bool `json:"silent,omitempty"`
+	Silent *bool `json:"silent,omitempty"`
 
 	// IncludeCommandLineAPI (optional) Determines whether Command Line API should be available during the evaluation.
-	IncludeCommandLineAPI bool `json:"includeCommandLineAPI,omitempty"`
+	IncludeCommandLineAPI *bool `json:"includeCommandLineAPI,omitempty"`
 
 	// ReturnByValue (optional) Whether the result is expected to be a JSON object which should be sent by value.
-	ReturnByValue bool `json:"returnByValue,omitempty"`
+	ReturnByValue *bool `json:"returnByValue,omitempty"`
 
 	// GeneratePreview (optional) Whether preview should be generated for the result.
-	GeneratePreview bool `json:"generatePreview,omitempty"`
+	GeneratePreview *bool `json:"generatePreview,omitempty"`
 
 	// AwaitPromise (optional) Whether execution should `await` for resulting value and return once awaited promise is
 	// resolved.
-	AwaitPromise bool `json:"awaitPromise,omitempty"`
+	AwaitPromise *bool `json:"awaitPromise,omitempty"`
 }
 
 // ProtoReq name.

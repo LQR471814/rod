@@ -559,7 +559,7 @@ type InputSynthesizeScrollGesture struct {
 	YOverscroll *float64 `json:"yOverscroll,omitempty"`
 
 	// PreventFling (optional) Prevent fling (default: true).
-	PreventFling bool `json:"preventFling,omitempty"`
+	PreventFling *bool `json:"preventFling,omitempty"`
 
 	// Speed (optional) Swipe speed in pixels per second (default: 800).
 	Speed *int `json:"speed,omitempty"`

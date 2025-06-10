@@ -590,10 +590,10 @@ type PageFrameResource struct {
 	ContentSize *float64 `json:"contentSize,omitempty"`
 
 	// Failed (optional) True if the resource failed to load.
-	Failed bool `json:"failed,omitempty"`
+	Failed *bool `json:"failed,omitempty"`
 
 	// Canceled (optional) True if the resource was canceled during loading.
-	Canceled bool `json:"canceled,omitempty"`
+	Canceled *bool `json:"canceled,omitempty"`
 }
 
 // PageFrameResourceTree (experimental) Information about the Frame hierarchy along with their cached resources.
@@ -946,7 +946,7 @@ type PageCompilationCacheParams struct {
 
 	// Eager (optional) A hint to the backend whether eager compilation is recommended.
 	// (the actual compilation mode used is upon backend discretion).
-	Eager bool `json:"eager,omitempty"`
+	Eager *bool `json:"eager,omitempty"`
 }
 
 // PageFileFilter (experimental) ...
@@ -1110,7 +1110,7 @@ type PageWebAppManifest struct {
 	Orientation string `json:"orientation,omitempty"`
 
 	// PreferRelatedApplications (optional) ...
-	PreferRelatedApplications bool `json:"preferRelatedApplications,omitempty"`
+	PreferRelatedApplications *bool `json:"preferRelatedApplications,omitempty"`
 
 	// ProtocolHandlers (optional) The handlers to open protocols.
 	ProtocolHandlers []*PageProtocolHandler `json:"protocolHandlers,omitempty"`
@@ -1682,11 +1682,11 @@ type PageAddScriptToEvaluateOnNewDocument struct {
 
 	// IncludeCommandLineAPI (experimental) (optional) Specifies whether command line API should be available to the script, defaults
 	// to false.
-	IncludeCommandLineAPI bool `json:"includeCommandLineAPI,omitempty"`
+	IncludeCommandLineAPI *bool `json:"includeCommandLineAPI,omitempty"`
 
 	// RunImmediately (experimental) (optional) If true, runs the script immediately on existing execution contexts or worlds.
 	// Default: false.
-	RunImmediately bool `json:"runImmediately,omitempty"`
+	RunImmediately *bool `json:"runImmediately,omitempty"`
 }
 
 // ProtoReq name.
@@ -1743,7 +1743,7 @@ type PageCaptureScreenshot struct {
 	Clip *PageViewport `json:"clip,omitempty"`
 
 	// FromSurface (experimental) (optional) Capture the screenshot from the surface, rather than the view. Defaults to true.
-	FromSurface bool `json:"fromSurface,omitempty"`
+	FromSurface *bool `json:"fromSurface,omitempty"`
 
 	// CaptureBeyondViewport (experimental) (optional) Capture the screenshot beyond the viewport. Defaults to false.
 	CaptureBeyondViewport bool `json:"captureBeyondViewport,omitempty"`
@@ -1842,7 +1842,7 @@ type PageCreateIsolatedWorld struct {
 
 	// GrantUniveralAccess (optional) Whether or not universal access should be granted to the isolated world. This is a powerful
 	// option, use with caution.
-	GrantUniveralAccess bool `json:"grantUniveralAccess,omitempty"`
+	GrantUniveralAccess *bool `json:"grantUniveralAccess,omitempty"`
 }
 
 // ProtoReq name.
@@ -1973,7 +1973,6 @@ type PageGetManifestIconsResult struct {
 	PrimaryIcon []byte `json:"primaryIcon,omitempty"`
 }
 
-// PageGetAppID (experimental) Returns the unique (PWA) app id.
 // Only returns values if the feature flag 'WebAppEnableManifestId' is enabled.
 type PageGetAppID struct{}
 
@@ -2292,10 +2291,10 @@ type PagePrintToPDF struct {
 	TransferMode PagePrintToPDFTransferMode `json:"transferMode,omitempty"`
 
 	// GenerateTaggedPDF (experimental) (optional) Whether or not to generate tagged (accessible) PDF. Defaults to embedder choice.
-	GenerateTaggedPDF bool `json:"generateTaggedPDF,omitempty"`
+	GenerateTaggedPDF *bool `json:"generateTaggedPDF,omitempty"`
 
 	// GenerateDocumentOutline (experimental) (optional) Whether or not to embed the document outline into the PDF.
-	GenerateDocumentOutline bool `json:"generateDocumentOutline,omitempty"`
+	GenerateDocumentOutline *bool `json:"generateDocumentOutline,omitempty"`
 }
 
 // ProtoReq name.
@@ -2319,7 +2318,7 @@ type PagePrintToPDFResult struct {
 // PageReload Reloads given page optionally ignoring the cache.
 type PageReload struct {
 	// IgnoreCache (optional) If true, browser cache is ignored (as if the user pressed Shift+refresh).
-	IgnoreCache bool `json:"ignoreCache,omitempty"`
+	IgnoreCache *bool `json:"ignoreCache,omitempty"`
 
 	// ScriptToEvaluateOnLoad (optional) If set, the script will be injected into all frames of the inspected page after reload.
 	// Argument will be ignored if reloading dataURL origin.
@@ -2397,10 +2396,10 @@ type PageSearchInResource struct {
 	Query string `json:"query"`
 
 	// CaseSensitive (optional) If true, search is case sensitive.
-	CaseSensitive bool `json:"caseSensitive,omitempty"`
+	CaseSensitive *bool `json:"caseSensitive,omitempty"`
 
 	// IsRegex (optional) If true, treats string parameter as regex.
-	IsRegex bool `json:"isRegex,omitempty"`
+	IsRegex *bool `json:"isRegex,omitempty"`
 }
 
 // ProtoReq name.
@@ -2521,7 +2520,7 @@ type PageSetDeviceMetricsOverride struct {
 	PositionY *int `json:"positionY,omitempty"`
 
 	// DontSetVisibleSize (optional) Do not set visible view size, rely upon explicit setVisibleSize call.
-	DontSetVisibleSize bool `json:"dontSetVisibleSize,omitempty"`
+	DontSetVisibleSize *bool `json:"dontSetVisibleSize,omitempty"`
 
 	// ScreenOrientation (optional) Screen orientation override.
 	ScreenOrientation *EmulationScreenOrientation `json:"screenOrientation,omitempty"`

@@ -84,7 +84,6 @@ type PerformanceTimelineTimelineEvent struct {
 	LayoutShiftDetails *PerformanceTimelineLayoutShift `json:"layoutShiftDetails,omitempty"`
 }
 
-// PerformanceTimelineEnable Previously buffered events would be reported before method returns.
 // See also: timelineEventAdded.
 type PerformanceTimelineEnable struct {
 	// EventTypes The types of event to report, as specified in

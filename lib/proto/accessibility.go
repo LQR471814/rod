@@ -144,7 +144,7 @@ type AccessibilityAXValueSource struct {
 	AttributeValue *AccessibilityAXValue `json:"attributeValue,omitempty"`
 
 	// Superseded (optional) Whether this source is superseded by a higher priority source.
-	Superseded bool `json:"superseded,omitempty"`
+	Superseded *bool `json:"superseded,omitempty"`
 
 	// NativeSource (optional) The native markup source for this value, e.g. a `<label>` element.
 	NativeSource AccessibilityAXValueNativeSourceType `json:"nativeSource,omitempty"`
@@ -153,7 +153,7 @@ type AccessibilityAXValueSource struct {
 	NativeSourceValue *AccessibilityAXValue `json:"nativeSourceValue,omitempty"`
 
 	// Invalid (optional) Whether the value for this property is invalid.
-	Invalid bool `json:"invalid,omitempty"`
+	Invalid *bool `json:"invalid,omitempty"`
 
 	// InvalidReason (optional) Reason for the value being invalid, if it is.
 	InvalidReason string `json:"invalidReason,omitempty"`
@@ -402,7 +402,7 @@ type AccessibilityGetPartialAXTree struct {
 	ObjectID RuntimeRemoteObjectID `json:"objectId,omitempty"`
 
 	// FetchRelatives (optional) Whether to fetch this node's ancestors, siblings and children. Defaults to true.
-	FetchRelatives bool `json:"fetchRelatives,omitempty"`
+	FetchRelatives *bool `json:"fetchRelatives,omitempty"`
 }
 
 // ProtoReq name.

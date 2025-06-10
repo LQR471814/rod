@@ -37,7 +37,6 @@ const (
 	MediaPlayerMessageLevelDebug MediaPlayerMessageLevel = "debug"
 )
 
-// MediaPlayerMessage Have one type per entry in MediaLogRecord::Type
 // Corresponds to kMessage.
 type MediaPlayerMessage struct {
 	// Level Keep in sync with MediaLogMessageLevel

@@ -165,20 +165,20 @@ type BrowserPermissionDescriptor struct {
 	Name string `json:"name"`
 
 	// Sysex (optional) For "midi" permission, may also specify sysex control.
-	Sysex bool `json:"sysex,omitempty"`
+	Sysex *bool `json:"sysex,omitempty"`
 
 	// UserVisibleOnly (optional) For "push" permission, may specify userVisibleOnly.
 	// Note that userVisibleOnly = true is the only currently supported type.
-	UserVisibleOnly bool `json:"userVisibleOnly,omitempty"`
+	UserVisibleOnly *bool `json:"userVisibleOnly,omitempty"`
 
 	// AllowWithoutSanitization (optional) For "clipboard" permission, may specify allowWithoutSanitization.
-	AllowWithoutSanitization bool `json:"allowWithoutSanitization,omitempty"`
+	AllowWithoutSanitization *bool `json:"allowWithoutSanitization,omitempty"`
 
 	// AllowWithoutGesture (optional) For "fullscreen" permission, must specify allowWithoutGesture:true.
-	AllowWithoutGesture bool `json:"allowWithoutGesture,omitempty"`
+	AllowWithoutGesture *bool `json:"allowWithoutGesture,omitempty"`
 
 	// PanTiltZoom (optional) For "camera" permission, may specify panTiltZoom.
-	PanTiltZoom bool `json:"panTiltZoom,omitempty"`
+	PanTiltZoom *bool `json:"panTiltZoom,omitempty"`
 }
 
 // BrowserBrowserCommandID (experimental) Browser command ids used by executeBrowserCommand.
@@ -426,7 +426,7 @@ type BrowserGetHistograms struct {
 	Query string `json:"query,omitempty"`
 
 	// Delta (optional) If true, retrieve delta since last delta call.
-	Delta bool `json:"delta,omitempty"`
+	Delta *bool `json:"delta,omitempty"`
 }
 
 // ProtoReq name.
@@ -450,7 +450,7 @@ type BrowserGetHistogram struct {
 	Name string `json:"name"`
 
 	// Delta (optional) If true, retrieve delta since last delta call.
-	Delta bool `json:"delta,omitempty"`
+	Delta *bool `json:"delta,omitempty"`
 }
 
 // ProtoReq name.

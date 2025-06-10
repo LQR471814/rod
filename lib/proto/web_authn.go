@@ -95,7 +95,7 @@ type WebAuthnVirtualAuthenticatorOptions struct {
 
 	// AutomaticPresenceSimulation (optional) If set to true, tests of user presence will succeed immediately.
 	// Otherwise, they will not be resolved. Defaults to true.
-	AutomaticPresenceSimulation bool `json:"automaticPresenceSimulation,omitempty"`
+	AutomaticPresenceSimulation *bool `json:"automaticPresenceSimulation,omitempty"`
 
 	// IsUserVerified (optional) Sets whether User Verification succeeds or fails for an authenticator.
 	// Defaults to false.
@@ -143,12 +143,12 @@ type WebAuthnCredential struct {
 	// BackupEligibility (optional) Assertions returned by this credential will have the backup eligibility
 	// (BE) flag set to this value. Defaults to the authenticator's
 	// defaultBackupEligibility value.
-	BackupEligibility bool `json:"backupEligibility,omitempty"`
+	BackupEligibility *bool `json:"backupEligibility,omitempty"`
 
 	// BackupState (optional) Assertions returned by this credential will have the backup state (BS)
 	// flag set to this value. Defaults to the authenticator's
 	// defaultBackupState value.
-	BackupState bool `json:"backupState,omitempty"`
+	BackupState *bool `json:"backupState,omitempty"`
 }
 
 // WebAuthnEnable Enable the WebAuthn domain and start intercepting credential storage and
@@ -386,10 +386,10 @@ type WebAuthnSetCredentialProperties struct {
 	CredentialID []byte `json:"credentialId"`
 
 	// BackupEligibility (optional) ...
-	BackupEligibility bool `json:"backupEligibility,omitempty"`
+	BackupEligibility *bool `json:"backupEligibility,omitempty"`
 
 	// BackupState (optional) ...
-	BackupState bool `json:"backupState,omitempty"`
+	BackupState *bool `json:"backupState,omitempty"`
 }
 
 // ProtoReq name.

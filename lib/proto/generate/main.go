@@ -160,6 +160,12 @@ func (d *definition) format() (code string) {
 					if !strings.Contains(prop.comment(), "(default: 0)") {
 						t = "*" + t
 					}
+				case "bool":
+					if !strings.Contains(strings.ToLower(prop.comment()), "defaults to false") &&
+						!strings.Contains(strings.ToLower(prop.comment()), "default is false") &&
+						!strings.Contains(prop.comment(), "(default: false)") {
+						t = "*" + t
+					}
 				}
 			}
 

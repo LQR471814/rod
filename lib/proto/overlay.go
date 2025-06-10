@@ -180,7 +180,7 @@ type OverlayHighlightConfig struct {
 	ShowRulers bool `json:"showRulers,omitempty"`
 
 	// ShowAccessibilityInfo (optional) Whether the a11y info should be shown (default: true).
-	ShowAccessibilityInfo bool `json:"showAccessibilityInfo,omitempty"`
+	ShowAccessibilityInfo *bool `json:"showAccessibilityInfo,omitempty"`
 
 	// ShowExtensionLines (optional) Whether the extension lines from node to the rulers should be shown (default: false).
 	ShowExtensionLines bool `json:"showExtensionLines,omitempty"`
@@ -398,16 +398,16 @@ type OverlayGetHighlightObjectForTest struct {
 	NodeID DOMNodeID `json:"nodeId"`
 
 	// IncludeDistance (optional) Whether to include distance info.
-	IncludeDistance bool `json:"includeDistance,omitempty"`
+	IncludeDistance *bool `json:"includeDistance,omitempty"`
 
 	// IncludeStyle (optional) Whether to include style info.
-	IncludeStyle bool `json:"includeStyle,omitempty"`
+	IncludeStyle *bool `json:"includeStyle,omitempty"`
 
 	// ColorFormat (optional) The color format to get config with (default: hex).
 	ColorFormat OverlayColorFormat `json:"colorFormat,omitempty"`
 
 	// ShowAccessibilityInfo (optional) Whether to show accessibility info (default: true).
-	ShowAccessibilityInfo bool `json:"showAccessibilityInfo,omitempty"`
+	ShowAccessibilityInfo *bool `json:"showAccessibilityInfo,omitempty"`
 }
 
 // ProtoReq name.

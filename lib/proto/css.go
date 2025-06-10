@@ -137,7 +137,7 @@ type CSSCSSStyleSheetHeader struct {
 	Disabled bool `json:"disabled"`
 
 	// HasSourceURL (optional) Whether the sourceURL field value comes from the sourceURL comment.
-	HasSourceURL bool `json:"hasSourceURL,omitempty"`
+	HasSourceURL *bool `json:"hasSourceURL,omitempty"`
 
 	// IsInline Whether this stylesheet is created for STYLE tag by parser. This flag is not set for
 	// document.written STYLE tags.
@@ -169,7 +169,7 @@ type CSSCSSStyleSheetHeader struct {
 	EndColumn float64 `json:"endColumn"`
 
 	// LoadingFailed (experimental) (optional) If the style sheet was loaded from a network resource, this indicates when the resource failed to load
-	LoadingFailed bool `json:"loadingFailed,omitempty"`
+	LoadingFailed *bool `json:"loadingFailed,omitempty"`
 }
 
 // CSSCSSRule CSS rule representation.
@@ -278,7 +278,7 @@ type CSSShorthandEntry struct {
 	Value string `json:"value"`
 
 	// Important (optional) Whether the property has "!important" annotation (implies `false` if absent).
-	Important bool `json:"important,omitempty"`
+	Important *bool `json:"important,omitempty"`
 }
 
 // CSSCSSComputedStyleProperty ...
@@ -318,19 +318,19 @@ type CSSCSSProperty struct {
 	Value string `json:"value"`
 
 	// Important (optional) Whether the property has "!important" annotation (implies `false` if absent).
-	Important bool `json:"important,omitempty"`
+	Important *bool `json:"important,omitempty"`
 
 	// Implicit (optional) Whether the property is implicit (implies `false` if absent).
-	Implicit bool `json:"implicit,omitempty"`
+	Implicit *bool `json:"implicit,omitempty"`
 
 	// Text (optional) The full property text as specified in the style.
 	Text string `json:"text,omitempty"`
 
 	// ParsedOk (optional) Whether the property is understood by the browser (implies `true` if absent).
-	ParsedOk bool `json:"parsedOk,omitempty"`
+	ParsedOk *bool `json:"parsedOk,omitempty"`
 
 	// Disabled (optional) Whether the property is disabled by the user (present for source-based properties only).
-	Disabled bool `json:"disabled,omitempty"`
+	Disabled *bool `json:"disabled,omitempty"`
 
 	// Range (optional) The entire property range in the enclosing style declaration (if available).
 	Range *CSSSourceRange `json:"range,omitempty"`

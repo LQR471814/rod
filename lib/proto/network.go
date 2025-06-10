@@ -352,7 +352,7 @@ type NetworkRequest struct {
 	PostData string `json:"postData,omitempty"`
 
 	// HasPostData (optional) True when the request has POST data. Note that postData might still be omitted when this flag is true when the data is too long.
-	HasPostData bool `json:"hasPostData,omitempty"`
+	HasPostData *bool `json:"hasPostData,omitempty"`
 
 	// PostDataEntries (experimental) (optional) Request body elements (post data broken into individual entries).
 	PostDataEntries []*NetworkPostDataEntry `json:"postDataEntries,omitempty"`
@@ -367,7 +367,7 @@ type NetworkRequest struct {
 	ReferrerPolicy NetworkRequestReferrerPolicy `json:"referrerPolicy"`
 
 	// IsLinkPreload (optional) Whether is loaded via link preload.
-	IsLinkPreload bool `json:"isLinkPreload,omitempty"`
+	IsLinkPreload *bool `json:"isLinkPreload,omitempty"`
 
 	// TrustTokenParams (experimental) (optional) Set for requests when the TrustToken API is used. Contains the parameters
 	// passed by the developer (e.g. via "fetch") as understood by the backend.
@@ -375,7 +375,7 @@ type NetworkRequest struct {
 
 	// IsSameSite (experimental) (optional) True if this resource request is considered to be the 'same site' as the
 	// request corresponding to the main frame.
-	IsSameSite bool `json:"isSameSite,omitempty"`
+	IsSameSite *bool `json:"isSameSite,omitempty"`
 }
 
 // NetworkSignedCertificateTimestamp Details of a signed certificate timestamp (SCT).
@@ -793,16 +793,16 @@ type NetworkResponse struct {
 	RemotePort *int `json:"remotePort,omitempty"`
 
 	// FromDiskCache (optional) Specifies that the request was served from the disk cache.
-	FromDiskCache bool `json:"fromDiskCache,omitempty"`
+	FromDiskCache *bool `json:"fromDiskCache,omitempty"`
 
 	// FromServiceWorker (optional) Specifies that the request was served from the ServiceWorker.
-	FromServiceWorker bool `json:"fromServiceWorker,omitempty"`
+	FromServiceWorker *bool `json:"fromServiceWorker,omitempty"`
 
 	// FromPrefetchCache (optional) Specifies that the request was served from the prefetch cache.
-	FromPrefetchCache bool `json:"fromPrefetchCache,omitempty"`
+	FromPrefetchCache *bool `json:"fromPrefetchCache,omitempty"`
 
 	// FromEarlyHints (optional) Specifies that the request was served from the prefetch cache.
-	FromEarlyHints bool `json:"fromEarlyHints,omitempty"`
+	FromEarlyHints *bool `json:"fromEarlyHints,omitempty"`
 
 	// ServiceWorkerRouterInfo (experimental) (optional) Information about how ServiceWorker Static Router API was used. If this
 	// field is set with `matchedSourceType` field, a matching rule is found.
@@ -1001,7 +1001,7 @@ type NetworkCookie struct {
 	PartitionKey *NetworkCookiePartitionKey `json:"partitionKey,omitempty"`
 
 	// PartitionKeyOpaque (experimental) (optional) True if cookie partition key is opaque.
-	PartitionKeyOpaque bool `json:"partitionKeyOpaque,omitempty"`
+	PartitionKeyOpaque *bool `json:"partitionKeyOpaque,omitempty"`
 }
 
 // NetworkSetCookieBlockedReason (experimental) Types of reasons why a cookie may not be stored from a response.
@@ -1224,10 +1224,10 @@ type NetworkCookieParam struct {
 	Path string `json:"path,omitempty"`
 
 	// Secure (optional) True if cookie is secure.
-	Secure bool `json:"secure,omitempty"`
+	Secure *bool `json:"secure,omitempty"`
 
 	// HTTPOnly (optional) True if cookie is http-only.
-	HTTPOnly bool `json:"httpOnly,omitempty"`
+	HTTPOnly *bool `json:"httpOnly,omitempty"`
 
 	// SameSite (optional) Cookie SameSite type.
 	SameSite NetworkCookieSameSite `json:"sameSite,omitempty"`
@@ -1239,7 +1239,7 @@ type NetworkCookieParam struct {
 	Priority NetworkCookiePriority `json:"priority,omitempty"`
 
 	// SameParty (experimental) (optional) True if cookie is SameParty.
-	SameParty bool `json:"sameParty,omitempty"`
+	SameParty *bool `json:"sameParty,omitempty"`
 
 	// SourceScheme (experimental) (optional) Cookie source scheme type.
 	SourceScheme NetworkCookieSourceScheme `json:"sourceScheme,omitempty"`
@@ -1915,7 +1915,7 @@ type NetworkEmulateNetworkConditions struct {
 	PacketQueueLength *int `json:"packetQueueLength,omitempty"`
 
 	// PacketReordering (experimental) (optional) WebRTC packetReordering feature.
-	PacketReordering bool `json:"packetReordering,omitempty"`
+	PacketReordering *bool `json:"packetReordering,omitempty"`
 }
 
 // ProtoReq name.
@@ -2133,10 +2133,10 @@ type NetworkSearchInResponseBody struct {
 	Query string `json:"query"`
 
 	// CaseSensitive (optional) If true, search is case sensitive.
-	CaseSensitive bool `json:"caseSensitive,omitempty"`
+	CaseSensitive *bool `json:"caseSensitive,omitempty"`
 
 	// IsRegex (optional) If true, treats string parameter as regex.
-	IsRegex bool `json:"isRegex,omitempty"`
+	IsRegex *bool `json:"isRegex,omitempty"`
 }
 
 // ProtoReq name.
@@ -2215,10 +2215,10 @@ type NetworkSetCookie struct {
 	Path string `json:"path,omitempty"`
 
 	// Secure (optional) True if cookie is secure.
-	Secure bool `json:"secure,omitempty"`
+	Secure *bool `json:"secure,omitempty"`
 
 	// HTTPOnly (optional) True if cookie is http-only.
-	HTTPOnly bool `json:"httpOnly,omitempty"`
+	HTTPOnly *bool `json:"httpOnly,omitempty"`
 
 	// SameSite (optional) Cookie SameSite type.
 	SameSite NetworkCookieSameSite `json:"sameSite,omitempty"`
@@ -2230,7 +2230,7 @@ type NetworkSetCookie struct {
 	Priority NetworkCookiePriority `json:"priority,omitempty"`
 
 	// SameParty (experimental) (optional) True if cookie is SameParty.
-	SameParty bool `json:"sameParty,omitempty"`
+	SameParty *bool `json:"sameParty,omitempty"`
 
 	// SourceScheme (experimental) (optional) Cookie source scheme type.
 	SourceScheme NetworkCookieSourceScheme `json:"sourceScheme,omitempty"`
@@ -2489,7 +2489,7 @@ type NetworkLoadingFailed struct {
 	ErrorText string `json:"errorText"`
 
 	// Canceled (optional) True if loading was canceled.
-	Canceled bool `json:"canceled,omitempty"`
+	Canceled *bool `json:"canceled,omitempty"`
 
 	// BlockedReason (optional) The reason why loading was blocked, if any.
 	BlockedReason NetworkBlockedReason `json:"blockedReason,omitempty"`
@@ -2543,7 +2543,7 @@ type NetworkRequestIntercepted struct {
 
 	// IsDownload (optional) Set if the request is a navigation that will result in a download.
 	// Only present after response is received from the server (i.e. HeadersReceived stage).
-	IsDownload bool `json:"isDownload,omitempty"`
+	IsDownload *bool `json:"isDownload,omitempty"`
 
 	// RedirectURL (optional) Redirect location, only sent if a redirect was intercepted.
 	RedirectURL string `json:"redirectUrl,omitempty"`
@@ -2881,7 +2881,7 @@ type NetworkRequestWillBeSentExtraInfo struct {
 	ClientSecurityState *NetworkClientSecurityState `json:"clientSecurityState,omitempty"`
 
 	// SiteHasCookieInOtherPartition (optional) Whether the site has partitioned cookies stored in a partition different than the current one.
-	SiteHasCookieInOtherPartition bool `json:"siteHasCookieInOtherPartition,omitempty"`
+	SiteHasCookieInOtherPartition *bool `json:"siteHasCookieInOtherPartition,omitempty"`
 }
 
 // ProtoEvent name.
@@ -2922,7 +2922,7 @@ type NetworkResponseReceivedExtraInfo struct {
 	CookiePartitionKey *NetworkCookiePartitionKey `json:"cookiePartitionKey,omitempty"`
 
 	// CookiePartitionKeyOpaque (optional) True if partitioned cookies are enabled, but the partition key is not serializable to string.
-	CookiePartitionKeyOpaque bool `json:"cookiePartitionKeyOpaque,omitempty"`
+	CookiePartitionKeyOpaque *bool `json:"cookiePartitionKeyOpaque,omitempty"`
 
 	// ExemptedCookies (optional) A list of cookies which should have been blocked by 3PCD but are exempted and stored from
 	// the response with the corresponding reason.

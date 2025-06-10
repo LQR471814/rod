@@ -145,7 +145,7 @@ type EmulationUserAgentMetadata struct {
 	Bitness string `json:"bitness,omitempty"`
 
 	// Wow64 (optional) ...
-	Wow64 bool `json:"wow64,omitempty"`
+	Wow64 *bool `json:"wow64,omitempty"`
 }
 
 // EmulationSensorType (experimental) Used to specify sensor types to emulate.
@@ -184,7 +184,7 @@ const (
 // EmulationSensorMetadata (experimental) ...
 type EmulationSensorMetadata struct {
 	// Available (optional) ...
-	Available bool `json:"available,omitempty"`
+	Available *bool `json:"available,omitempty"`
 
 	// MinimumFrequency (optional) ...
 	MinimumFrequency *float64 `json:"minimumFrequency,omitempty"`
@@ -324,7 +324,7 @@ func (m EmulationSetFocusEmulationEnabled) Call(c Client) error {
 type EmulationSetAutoDarkModeOverride struct {
 	// Enabled (optional) Whether to enable or disable automatic dark mode.
 	// If not specified, any existing override will be cleared.
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled *bool `json:"enabled,omitempty"`
 }
 
 // ProtoReq name.
@@ -402,7 +402,7 @@ type EmulationSetDeviceMetricsOverride struct {
 	PositionY *int `json:"positionY,omitempty"`
 
 	// DontSetVisibleSize (experimental) (optional) Do not set visible view size, rely upon explicit setVisibleSize call.
-	DontSetVisibleSize bool `json:"dontSetVisibleSize,omitempty"`
+	DontSetVisibleSize *bool `json:"dontSetVisibleSize,omitempty"`
 
 	// ScreenOrientation (optional) Screen orientation override.
 	ScreenOrientation *EmulationScreenOrientation `json:"screenOrientation,omitempty"`

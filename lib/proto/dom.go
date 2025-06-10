@@ -288,7 +288,7 @@ type DOMNode struct {
 	DistributedNodes []*DOMBackendNode `json:"distributedNodes,omitempty"`
 
 	// IsSVG (optional) Whether the node is SVG.
-	IsSVG bool `json:"isSVG,omitempty"`
+	IsSVG *bool `json:"isSVG,omitempty"`
 
 	// CompatibilityMode (optional) ...
 	CompatibilityMode DOMCompatibilityMode `json:"compatibilityMode,omitempty"`
@@ -730,7 +730,7 @@ type DOMGetNodeForLocation struct {
 	IncludeUserAgentShadowDOM bool `json:"includeUserAgentShadowDOM,omitempty"`
 
 	// IgnorePointerEventsNone (optional) Whether to ignore pointer-events: none on elements and hit test them.
-	IgnorePointerEventsNone bool `json:"ignorePointerEventsNone,omitempty"`
+	IgnorePointerEventsNone *bool `json:"ignorePointerEventsNone,omitempty"`
 }
 
 // ProtoReq name.
@@ -909,7 +909,7 @@ type DOMPerformSearch struct {
 	Query string `json:"query"`
 
 	// IncludeUserAgentShadowDOM (optional) True to search in user agent shadow DOM.
-	IncludeUserAgentShadowDOM bool `json:"includeUserAgentShadowDOM,omitempty"`
+	IncludeUserAgentShadowDOM *bool `json:"includeUserAgentShadowDOM,omitempty"`
 }
 
 // ProtoReq name.

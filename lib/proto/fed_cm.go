@@ -102,7 +102,7 @@ type FedCmEnable struct {
 	// DisableRejectionDelay (optional) Allows callers to disable the promise rejection delay that would
 	// normally happen, if this is unimportant to what's being tested.
 	// (step 4 of https://fedidcg.github.io/FedCM/#browser-api-rp-sign-in)
-	DisableRejectionDelay bool `json:"disableRejectionDelay,omitempty"`
+	DisableRejectionDelay *bool `json:"disableRejectionDelay,omitempty"`
 }
 
 // ProtoReq name.
@@ -184,7 +184,7 @@ type FedCmDismissDialog struct {
 	DialogID string `json:"dialogId"`
 
 	// TriggerCooldown (optional) ...
-	TriggerCooldown bool `json:"triggerCooldown,omitempty"`
+	TriggerCooldown *bool `json:"triggerCooldown,omitempty"`
 }
 
 // ProtoReq name.

@@ -28,10 +28,10 @@ type DOMSnapshotDOMNode struct {
 	InputValue string `json:"inputValue,omitempty"`
 
 	// InputChecked (optional) Only set for radio and checkbox input elements, indicates if the element has been checked
-	InputChecked bool `json:"inputChecked,omitempty"`
+	InputChecked *bool `json:"inputChecked,omitempty"`
 
 	// OptionSelected (optional) Only set for option elements, indicates if the element has been selected
-	OptionSelected bool `json:"optionSelected,omitempty"`
+	OptionSelected *bool `json:"optionSelected,omitempty"`
 
 	// BackendNodeID `Node`'s id, corresponds to DOM.Node.backendNodeId.
 	BackendNodeID DOMBackendNodeID `json:"backendNodeId"`
@@ -85,7 +85,7 @@ type DOMSnapshotDOMNode struct {
 	// IsClickable (optional) Whether this DOM node responds to mouse clicks. This includes nodes that have had click
 	// event listeners attached via JavaScript as well as anchor tags that naturally navigate when
 	// clicked.
-	IsClickable bool `json:"isClickable,omitempty"`
+	IsClickable *bool `json:"isClickable,omitempty"`
 
 	// EventListeners (optional) Details of the node's event listeners, if any.
 	EventListeners []*DOMDebuggerEventListener `json:"eventListeners,omitempty"`
@@ -141,7 +141,7 @@ type DOMSnapshotLayoutTreeNode struct {
 	PaintOrder *int `json:"paintOrder,omitempty"`
 
 	// IsStackingContext (optional) Set to true to indicate the element begins a new stacking context.
-	IsStackingContext bool `json:"isStackingContext,omitempty"`
+	IsStackingContext *bool `json:"isStackingContext,omitempty"`
 }
 
 // DOMSnapshotComputedStyle A subset of the full ComputedStyle as defined by the request whitelist.
@@ -384,13 +384,13 @@ type DOMSnapshotGetSnapshot struct {
 	ComputedStyleWhitelist []string `json:"computedStyleWhitelist"`
 
 	// IncludeEventListeners (optional) Whether or not to retrieve details of DOM listeners (default false).
-	IncludeEventListeners bool `json:"includeEventListeners,omitempty"`
+	IncludeEventListeners *bool `json:"includeEventListeners,omitempty"`
 
 	// IncludePaintOrder (optional) Whether to determine and include the paint order index of LayoutTreeNodes (default false).
-	IncludePaintOrder bool `json:"includePaintOrder,omitempty"`
+	IncludePaintOrder *bool `json:"includePaintOrder,omitempty"`
 
 	// IncludeUserAgentShadowTree (optional) Whether to include UA shadow tree in the snapshot (default false).
-	IncludeUserAgentShadowTree bool `json:"includeUserAgentShadowTree,omitempty"`
+	IncludeUserAgentShadowTree *bool `json:"includeUserAgentShadowTree,omitempty"`
 }
 
 // ProtoReq name.
@@ -423,10 +423,10 @@ type DOMSnapshotCaptureSnapshot struct {
 	ComputedStyles []string `json:"computedStyles"`
 
 	// IncludePaintOrder (optional) Whether to include layout object paint orders into the snapshot.
-	IncludePaintOrder bool `json:"includePaintOrder,omitempty"`
+	IncludePaintOrder *bool `json:"includePaintOrder,omitempty"`
 
 	// IncludeDOMRects (optional) Whether to include DOM rectangles (offsetRects, clientRects, scrollRects) into the snapshot
-	IncludeDOMRects bool `json:"includeDOMRects,omitempty"`
+	IncludeDOMRects *bool `json:"includeDOMRects,omitempty"`
 
 	// IncludeBlendedBackgroundColors (experimental) (optional) Whether to include blended background colors in the snapshot (default: false).
 	// Blended background color is achieved by blending background colors of all elements
