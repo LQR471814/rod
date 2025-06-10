@@ -215,9 +215,10 @@ func (p *Page) ElementsByJS(opts *EvalOptions) (Elements, error) {
 
 	defer func() { err = p.Release(res) }()
 
+	ownProperties := true
 	list, err := proto.RuntimeGetProperties{
 		ObjectID:      res.ObjectID,
-		OwnProperties: true,
+		OwnProperties: &ownProperties,
 	}.Call(p)
 	if err != nil {
 		return nil, err
@@ -259,9 +260,10 @@ func (p *Page) Search(query string) (*SearchResult, error) {
 			_ = proto.DOMDiscardSearchResults{SearchID: sr.SearchID}.Call(p)
 		}
 
+		includeUserAgentShadowDOM := true
 		res, err := proto.DOMPerformSearch{
 			Query:                     query,
-			IncludeUserAgentShadowDOM: true,
+			IncludeUserAgentShadowDOM: &includeUserAgentShadowDOM,
 		}.Call(p)
 		if err != nil {
 			return true, err

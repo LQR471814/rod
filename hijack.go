@@ -414,8 +414,9 @@ func (ctx *HijackResponse) Fail(reason proto.NetworkErrorReason) *HijackResponse
 // Ref: https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication
 func (b *Browser) HandleAuth(username, password string) func() error {
 	enable := b.DisableDomain("", &proto.FetchEnable{})
+	handleAuthRequests := true
 	disable := b.EnableDomain("", &proto.FetchEnable{
-		HandleAuthRequests: true,
+		HandleAuthRequests: &handleAuthRequests,
 	})
 
 	paused := &proto.FetchRequestPaused{}

@@ -270,9 +270,10 @@ func (b *Browser) PageFromTarget(targetID proto.TargetTargetID) (*Page, error) {
 		return page, nil
 	}
 
+	flatten := true
 	session, err := proto.TargetAttachToTarget{
 		TargetID: targetID,
-		Flatten:  true, // if it's not set no response will return
+		Flatten:  &flatten, // if it's not set no response will return
 	}.Call(b)
 	if err != nil {
 		return nil, err

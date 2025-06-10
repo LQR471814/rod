@@ -2,21 +2,41 @@ package rod_test
 
 import (
 	"testing"
+
+	"github.com/go-rod/rod/lib/proto"
 )
 
 // This is the template to demonstrate how to test Rod.
 func TestRod(t *testing.T) {
 	g := setup(t)
-	g.cancelTimeout() // Cancel timeout protection
+	g.cancelTimeout()
 
-	// You can use the pre-launched g.browser or g.page for testing
-	browser, page := g.browser, g.page
+	page := g.page
 
-	// You can also use the g.html to serve static html content
+	err := proto.AccessibilityEnable{}.Call(page)
+	if err != nil {
+		panic(err)
+	}
+
+	wait := page.EachEvent(
+		func(e *proto.AccessibilityLoadComplete) bool {
+			fetchRelatives := false
+
+			res, err := proto.AccessibilityGetPartialAXTree{
+				BackendNodeID:  e.Root.BackendDOMNodeID,
+				FetchRelatives: &fetchRelatives,
+			}.Call(page)
+			if err != nil {
+				panic(err)
+			}
+			g.Len(res.Nodes, 1)
+			return true
+		},
+	)
+
 	page.MustNavigate(g.html(doc)).MustWaitLoad()
 
-	g.Eq(browser.MustVersion().ProtocolVersion, "1.3")
-	g.Has(page.MustElement("body").MustText(), "ok")
+	wait()
 }
 
 const doc = `

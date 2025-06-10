@@ -153,9 +153,9 @@ func (p *Page) evaluate(opts *EvalOptions) (*proto.RuntimeRemoteObject, error) {
 	}
 
 	req := proto.RuntimeCallFunctionOn{
-		AwaitPromise:        opts.AwaitPromise,
-		ReturnByValue:       opts.ByValue,
-		UserGesture:         opts.UserGesture,
+		AwaitPromise:        &opts.AwaitPromise,
+		ReturnByValue:       &opts.ByValue,
+		UserGesture:         &opts.UserGesture,
 		FunctionDeclaration: opts.formatToJSFunc(),
 		Arguments:           args,
 	}

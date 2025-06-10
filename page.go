@@ -545,11 +545,12 @@ func (p *Page) ScrollScreenshot(opt *ScrollScreenshotOptions) ([]byte, error) {
 			}
 		}
 
+		fromSurface := false
 		req := &proto.PageCaptureScreenshot{
 			Format:                opt.Format,
 			Quality:               opt.Quality,
 			Clip:                  clip,
-			FromSurface:           false,
+			FromSurface:           &fromSurface,
 			CaptureBeyondViewport: false,
 			OptimizeForSpeed:      false,
 		}
@@ -600,10 +601,13 @@ func (p *Page) ScrollScreenshot(opt *ScrollScreenshotOptions) ([]byte, error) {
 func (p *Page) CaptureDOMSnapshot() (domSnapshot *proto.DOMSnapshotCaptureSnapshotResult, err error) {
 	_ = proto.DOMSnapshotEnable{}.Call(p)
 
+	includePaintOrder := true
+	includeDOMRects := true
+
 	snapshot, err := proto.DOMSnapshotCaptureSnapshot{
 		ComputedStyles:                 []string{},
-		IncludePaintOrder:              true,
-		IncludeDOMRects:                true,
+		IncludePaintOrder:              &includePaintOrder,
+		IncludeDOMRects:                &includeDOMRects,
 		IncludeBlendedBackgroundColors: true,
 		IncludeTextColorOpacities:      true,
 	}.Call(p)
@@ -914,10 +918,11 @@ func (p *Page) ObjectToJSON(obj *proto.RuntimeRemoteObject) (gson.JSON, error) {
 		return obj.Value, nil
 	}
 
+	returnByValue := true
 	res, err := proto.RuntimeCallFunctionOn{
 		ObjectID:            obj.ObjectID,
 		FunctionDeclaration: `function() { return this }`,
-		ReturnByValue:       true,
+		ReturnByValue:       &returnByValue,
 	}.Call(p)
 	if err != nil {
 		return gson.New(nil), err

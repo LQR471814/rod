@@ -160,7 +160,7 @@ func (sr *StreamReader) Read(p []byte) (n int, err error) {
 
 	if !res.EOF {
 		var bin []byte
-		if res.Base64Encoded {
+		if res.Base64Encoded != nil && *res.Base64Encoded {
 			bin, err = base64.StdEncoding.DecodeString(res.Data)
 			if err != nil {
 				return 0, err

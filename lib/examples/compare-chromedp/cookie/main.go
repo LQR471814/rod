@@ -19,17 +19,18 @@ func main() {
 
 	page := rod.New().MustConnect().MustPage()
 
+	httpOnly := true
 	page.MustSetCookies(&proto.NetworkCookieParam{
 		Name:     "cookie1",
 		Value:    "value1",
 		Domain:   "127.0.0.1",
-		HTTPOnly: true,
+		HTTPOnly: &httpOnly,
 		Expires:  expr,
 	}, &proto.NetworkCookieParam{
 		Name:     "cookie2",
 		Value:    "value2",
 		Domain:   "127.0.0.1",
-		HTTPOnly: true,
+		HTTPOnly: &httpOnly,
 		Expires:  expr,
 	})
 

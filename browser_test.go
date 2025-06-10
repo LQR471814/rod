@@ -420,8 +420,9 @@ func TestStreamReader(t *testing.T) {
 	g.Err(err)
 
 	g.mc.stub(1, proto.IORead{}, func(_ StubSend) (gson.JSON, error) {
+		base64Encoded := true
 		return gson.New(proto.IOReadResult{
-			Base64Encoded: true,
+			Base64Encoded: &base64Encoded,
 			Data:          "@",
 		}), nil
 	})

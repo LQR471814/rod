@@ -236,6 +236,7 @@ func Example_page_screenshot() {
 	page.MustScreenshot("my.png")
 
 	// customization version
+	fromSurface := true
 	img, _ := page.Screenshot(true, &proto.PageCaptureScreenshot{
 		Format:  proto.PageCaptureScreenshotFormatJpeg,
 		Quality: gson.Int(90),
@@ -246,7 +247,7 @@ func Example_page_screenshot() {
 			Height: 200,
 			Scale:  1,
 		},
-		FromSurface: true,
+		FromSurface: &fromSurface,
 	})
 	_ = utils.OutputFile("my.jpg", img)
 }
