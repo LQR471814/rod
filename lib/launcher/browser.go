@@ -15,7 +15,6 @@ import (
 
 	"github.com/LQR471814/rod/lib/defaults"
 	"github.com/LQR471814/rod/lib/utils"
-	"github.com/ysmood/fetchup"
 	"github.com/ysmood/leakless"
 )
 
@@ -125,31 +124,6 @@ func (lc *Browser) BinPath() string {
 	return filepath.Join(lc.Dir(), filepath.FromSlash(bin))
 }
 
-// Download browser from the fastest host.
-// It will race downloading a TCP packet from each host and use the fastest host.
-func (lc *Browser) Download() error {
-	us := []string{}
-	for _, host := range lc.Hosts {
-		us = append(us, host(lc.Revision))
-	}
-
-	dir := lc.Dir()
-
-	fu := fetchup.New(dir, us...)
-	fu.Ctx = lc.Context
-	fu.Logger = lc.Logger
-	if lc.HTTPClient != nil {
-		fu.HttpClient = lc.HTTPClient
-	}
-
-	err := fu.Fetch()
-	if err != nil {
-		return fmt.Errorf("can't find a browser binary for your OS, the doc might help https://go-rod.github.io/#/compatibility?id=os : %w", err) //nolint: lll
-	}
-
-	return fetchup.StripFirstDir(dir)
-}
-
 // Get is a smart helper to get the browser executable path.
 // If [Browser.BinPath] is not valid it will auto download the browser to [Browser.BinPath].
 func (lc *Browser) Get() (string, error) {
@@ -162,7 +136,7 @@ func (lc *Browser) Get() (string, error) {
 	// Try to cleanup before downloading
 	_ = os.RemoveAll(lc.Dir())
 
-	return lc.BinPath(), lc.Download()
+	return lc.BinPath(), nil
 }
 
 // MustGet is similar with Get.
