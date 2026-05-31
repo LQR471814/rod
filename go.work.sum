@@ -2,3 +2,7 @@ github.com/ysmood/fetchup v0.2.1 h1:n/NgIx92KOXFiKAhK3d+LlKpl8JuSjh5U27ULmHKtag=
 github.com/ysmood/fetchup v0.2.1/go.mod h1:94ROLWpn5fmCD4LPlcZ+LOE/iE/kRTU3kL+0ue/V+Os=
 github.com/ysmood/got v0.33.2 h1:mz0PaCMzR//YBtDDkDf6z0O09SfotXBHzw3zLrrS2sw=
 github.com/ysmood/got v0.33.2/go.mod h1:P3C/Wwttv4uq/tpovaH+c8ANmHePyFPxEbNzdxcEGDU=
+golang.org/x/net v0.24.0/go.mod h1:2Q7sJY5mzlzWjKtYUEXSlBWCdyaioyXzRB2RtU8KVE8=
+golang.org/x/sync v0.8.0/go.mod h1:Czt+wKu1gCyEFDUtn0jG5QVvpJ6rzVqr5aXyt9drQfk=
+golang.org/x/text v0.14.0/go.mod h1:18ZOQIKpY8NJVqYksKHtTdi31H5itFRjB5/qKTNYzSU=
+rsc.io/pdf v0.1.1/go.mod h1:n8OzWcQ6Sp37PL01nO98y4iUCRdTGarVfzxY20ICaU4=
