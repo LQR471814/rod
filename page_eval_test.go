@@ -4,10 +4,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/go-rod/rod"
-	"github.com/go-rod/rod/lib/cdp"
-	"github.com/go-rod/rod/lib/proto"
-	"github.com/go-rod/rod/lib/utils"
+	"github.com/LQR471814/rod"
+	"github.com/LQR471814/rod/lib/cdp"
+	"github.com/LQR471814/rod/lib/proto"
+	"github.com/LQR471814/rod/lib/utils"
 	"github.com/ysmood/gson"
 )
 

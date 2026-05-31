@@ -3,8 +3,8 @@ package input_test
 import (
 	"testing"
 
-	"github.com/go-rod/rod/lib/input"
-	"github.com/go-rod/rod/lib/proto"
+	"github.com/LQR471814/rod/lib/input"
+	"github.com/LQR471814/rod/lib/proto"
 	"github.com/ysmood/got"
 	"github.com/ysmood/gson"
 )

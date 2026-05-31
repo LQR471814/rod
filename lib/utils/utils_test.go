@@ -12,7 +12,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/go-rod/rod/lib/utils"
+	"github.com/LQR471814/rod/lib/utils"
 	"github.com/ysmood/got"
 )
 

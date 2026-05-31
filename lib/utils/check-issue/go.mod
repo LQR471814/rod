@@ -1,3 +1,3 @@
-module github.com/go-rod/rod/lib/utils/check-issue
+module github.com/LQR471814/rod/lib/utils/check-issue
 
 go 1.18
